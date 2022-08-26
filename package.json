@@ -1,0 +1,26 @@
+{
+  "name": "javascript_downloadserver",
+  "version": "1.0.0",
+  "description": "This is a website that I want to make so that users can drag and drop files and it will be downloaded by the server. It will be used with docker so it can be run more easily.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiracleSheep/JavaScript_DownloadServer.git"
+  },
+  "author": "MiracleSheep",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MiracleSheep/JavaScript_DownloadServer/issues"
+  },
+  "homepage": "https://github.com/MiracleSheep/JavaScript_DownloadServer#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "filepond": "^4.30.4",
+    "formidable": "^2.0.1"
+  }
+}
