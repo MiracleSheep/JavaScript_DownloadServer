@@ -1,3 +1,20 @@
-# JavaScript_DownloadServer
-This is a website that I want to make so that users can drag and drop files and it will be downloaded by the server. It will be used with docker so it can be run more easily.
+# Javascript_DownloadServer
 
+## Description
+
+This is a webserver I made to send files to a server. 
+Features include:
+* A website with a spot to drag and drop files
+
+## How to set up
+
+### Requirements
+* Docker
+* That is pretty much it
+
+### Instructions
+1. Git clone the repo ``git clone https://github.com/MiracleSheep/JavaScript_DownloadServer.git``
+4. Modify the .env file inside of the container to suit your needs
+5. Build the image in the directory with ``docker build -t downloadserver .``
+6. Run the image ``docker run -d --name [insert name here] downloadserver``
+7. Enjoy!
