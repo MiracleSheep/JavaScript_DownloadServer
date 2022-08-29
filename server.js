@@ -1,44 +1,44 @@
-//getting the node modules
-//express is responsible for setting up the webserver
-const express = require("express");
-
-//this helps to access environment files
+const express = require('express')
+const formidable = require('formidable')
+const FilePond = require('filepond')
+const app = express()
+const port = 5500
 var env = require('dotenv').config();
-
-//filepond is responsible for the file upload
-const filePond = require("filepond")
-//formidable is responsible for receiving the file
-const formidable = require('formidable');
-const app = express();
+const fs = require('fs')
 app.use(express.urlencoded({ extended: true }));
-console.log("started");
 
 app.get('/', (req, res) => {
-    console.log("get triggereed")
-    res.sendFile(__dirname+'/index.html')
-});
-
-app.get('/home', (req,res) => {
-    res.sendFile(__dirname+'/index.html')
+    res.sendFile(__dirname + '/index.html');
 })
 
-//This is waiting for an upload request for the files
-app.post('/upload', function(req, res){
-    const form = formidable({ multiples: false });
+app.post("/upload", function(req, res){
+    console.log("start /upload");
 
+    const form = formidable({ multiples: false });
+  
     form.parse(req, (err, fields, files) => {
       if (err) {
         next(err);
         return;
       }
-      let theFile = process.env.FILE_DESTINATION
+      console.log(files)
+      let theFile = files.filepond.filepath;
+      console.log("theFile: " + theFile);
   
       res.writeHead(200, { 'Content-Type': 'text/plain' });
       res.end(theFile);
-    })
+    });  
+  })
+
+app.post("/save", function(req, res){
+    console.log("start /save");
+    console.log(`req: ${JSON.stringify(req.body)}`);
+    let fileData = fs.readFileSync(req.body.filepond);
+    console.log(fileData)
+    fs.writeFileSync(fileData)
 })
 
-
-//listening on this port for a connection
-app.listen(process.env.NODE_LOCAL_PORT);
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 

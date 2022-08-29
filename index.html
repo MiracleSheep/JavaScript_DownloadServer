@@ -1,25 +1,75 @@
 <html>
 <head>
-    <!-- these are style sheets for the file uploader -->
-  <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
   <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-  <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+  <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
   <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
 </head>
+<style>
+
+
+
+.filepond--panel-root {
+	border-radius: 2em;
+	background-color: #edf0f4;
+	height: 1em;
+}
+
+.filepond--item-panel {
+	background-color: #595e68;
+}
+
+.filepond--drip-blob {
+	background-color: #7f8a9a;
+}
+
+.filepond--drop-label {
+	color: #4c4e53;
+}
+
+.filepond--label-action {
+	text-decoration-color: #babdc0;
+}
+
+
+html {
+	padding:30vh 0 0;
+}
+
+body {
+	max-width: 20em;
+	margin: 0 auto;
+}
+</style>
 <body>
-    FilePond.registerPlugin(FilePondPluginImagePreview);
-    <!-- creating a form -->
-  <form style="display:grid;" action="/save" method="POST">
-    <input type="file">
-    <button type="submit" onclick="">Save It</button>
-  </form>
+  <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+    <form style="display:grid;" action="/save" method="POST">
+      <input type="file" 
+      class="filepond"
+      name="filepond"
+      multiple
+      data-max-files="3" />
+      <button type="submit" onclick="">Save It</button>
+    </form>
+      
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script>
+
+      // Register the plugin with FilePond
+      FilePond.registerPlugin(FilePondPluginImagePreview);
+
+      // Get a reference to the file input element
+      const inputElement = document.querySelector('input[type="file"]');
+
+
+      // Create a FilePond instance
+      const pond = FilePond.create(inputElement);
+
+  
+      pond.setOptions({
+        server: "/upload"
+      })
+  
+    </script>
 </body>
-<!-- script for the file uploader -->
-<script>
-  const inputElement = document.querySelector('input[type="file"]');
-  const pond = FilePond.create( inputElement );
-  pond.setOptions({
-    server: "/upload"
-  })
-</script>
-</html>
+
+</html> 
