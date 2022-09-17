@@ -10,6 +10,7 @@ WORKDIR /usr/src/app
 #create a directory for the downloads folder
 RUN mkdir -p /usr/src/app/Downloads
 
+
 # Install app dependencies
 COPY package*.json ./
 
@@ -23,6 +24,11 @@ VOLUME ${FILE_DESTINATION}:${FILE_DESTINATION}
 
 # Bundle app source
 COPY . .
+
+#This adds a waiting functionality for the sql database to start
+ENV WAIT_VERSION 2.7.2
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/$WAIT_VERSION/wait /wait
+RUN chmod +x /wait
 
 
 EXPOSE ${NODE_LOCAL_PORT}

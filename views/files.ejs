@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Files</title>
+</head>
+<body>
+    <div class="table-data">
+    <table border="1">
+        <tr>
+            <th>File Name</th>
+            <th>Size</th>
+            <th>Time</th>
+            <th>Date</th>
+            <th>Uploader</th>
+        </tr>
+        
+        <%
+            if(userData.length!=0){
+            var i=1;
+            userData.forEach(function(data){
+        %>
+        <tr>
+            <td><%=i; %></td>
+            <td><%=data.filename %></td>
+            <td><%=data.size %></td>
+            <td><%=data.time %></td>
+            <td><%=data.date %></td>
+            <td><%=data.username %></td>
+        </tr>
+        <%  i++; }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="7">No Data Found</td>
+            </tr>
+        <% } %>
+    </table>
+    </div>
+</body>
+</html>

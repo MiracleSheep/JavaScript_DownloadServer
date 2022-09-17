@@ -2,9 +2,8 @@ version: '3.3'
 
 services:
   mysqldb:
-
     image: mysql
-    container_name: authentication_database
+    container_name: download_server_db
     restart: always
     env_file: ./.env
     environment:
@@ -18,7 +17,7 @@ services:
   app:
     build: 
       context: .
-    image: https://github.com/MiracleSheep/JavaScript_DownloadServer.git
+    image: miraclesheep/download-server:latest
     env_file: ./.env
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT

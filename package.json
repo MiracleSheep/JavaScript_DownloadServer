@@ -19,9 +19,13 @@
   "homepage": "https://github.com/MiracleSheep/JavaScript_DownloadServer#readme",
   "dependencies": {
     "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
     "express": "^4.18.1",
     "express-fileupload": "^1.4.0",
+    "express-session": "^1.17.3",
     "filepond": "^4.30.4",
-    "formidable": "^2.0.1"
+    "formidable": "^2.0.1",
+    "mysql2": "^2.3.3",
+    "path": "^0.12.7"
   }
 }
