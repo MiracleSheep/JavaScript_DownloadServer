@@ -1,0 +1,19 @@
+.topbar{
+    background-color: black;
+    overflow: hidden;
+}
+
+.topbar a {
+    background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    float: left;
+    padding: 14px 16px;
+    color: white;
+}
+
+.topbar a:hover {
+    background-color: white;
+    color: black;
+    transition-duration: 0.5s;
+
+}

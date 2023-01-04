@@ -65,7 +65,14 @@ app.get('/files', function(req, res, next) {
 });
 });
 
-//This is the home page of the website
+//this is the homepage of the website
+app.get('/', (req, res) => {
+
+
+
+})
+
+//This is the filedrop page of the website
 app.get('/filedrop', (req, res) => {
     res.sendFile(__dirname + '/views/filedrop.html');
 })
@@ -182,22 +189,6 @@ app.post("/save", function(req, res){
   }
 })
 
-
-// // This is used to handle error 404
-// app.use(function(req, res, next) {
-//   next(createError(404));
-// });
-
-// // This handles errors whenever a request is mande
-// app.use(function(err, req, res, next) {
-//   // setting local response to be the error message
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get('env') === 'development' ? err : {};
-//   // render the error page
-//   //setting status and showing error
-//   res.status(err.status || 500);
-//   res.render('error');
-// });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
